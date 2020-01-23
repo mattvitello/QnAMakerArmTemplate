@@ -25,13 +25,13 @@
         "searchAdminKey": {
 			"defaultValue": "123",
             "type": "string"
+        },
+		"azureSearchName": {
+			"defaultValue": "henderson-cb-search-service",
+            "type": "string"
         }
     },
-    "variables": {
-        "puredAzureSearchName": "[replace(parameters('appName'), '-', '')]",
-        "normalizedAzureSearchName": "[if(greater(length(variables('puredAzureSearchName')), 40), substring(variables('puredAzureSearchName'), sub(length(variables('puredAzureSearchName')), 40), 40) , variables('puredAzureSearchName'))]",
-        "azureSearchName": "henderson-cb-search-service"
-    },
+    "variables": {},
     "resources": [
         {
             "type": "Microsoft.CognitiveServices/accounts",
@@ -85,7 +85,7 @@
                         "[resourceId('Microsoft.Web/Sites', parameters('appName'))]"
                     ],
                     "properties": {
-                        "AzureSearchName": "[variables('azureSearchName')]",
+                        "AzureSearchName": "[parameters('azureSearchName')]",
                         "AzureSearchAdminKey": "[parameters('searchAdminKey')]",
                         "PrimaryEndpointKey": "[concat(parameters('appName'), '-PrimaryEndpointKey')]",
                         "SecondaryEndpointKey": "[concat(parameters('appName'), '-SecondaryEndpointKey')]",
