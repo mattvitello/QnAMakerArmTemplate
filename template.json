@@ -11,7 +11,7 @@
             "type": "string"
         },
         "sku": {
-			"defaultValue": "F0",
+			"defaultValue": "S0",
             "type": "string"
         },
         "location": {
